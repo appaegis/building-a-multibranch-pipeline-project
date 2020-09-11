@@ -16,6 +16,11 @@ pipeline {
             steps {
                 sh 'npm install'
             }
+            post {
+                 always {
+                     jiraSendBuildInfo site: 'appaegis.atlassian.net'
+                 }
+             }
         }
         stage('Test') {
             steps {
